@@ -25,10 +25,6 @@ const ScoreboardPage = () => {
       }
 `)
 
-
-
-
-
   return (
     <Layout>
       <ActiveScoreBox>
@@ -36,8 +32,8 @@ const ScoreboardPage = () => {
         <ScoreNumber>RES {activeCycle?.res || ''}</ScoreNumber>
         <ScoreNumber>ENL {activeCycle?.enl || ''}</ScoreNumber>
       </ActiveScoreBox>
-      <YearScore data={data} />
       <Scoreboard data={data} setActiveCycle={setActiveCycle} />
+      <YearScore data={data} />
     </Layout>
   )
 }
