@@ -39,8 +39,8 @@ const YearScore = ({ data }) => {
         {points && points.map(stat => (
           <ActiveScoreBox key={stat.year}>
             <Title>CYCLES WON {stat.year}</Title>
-            <ScoreNumber>RES {stat.resistanceWins}</ScoreNumber>
-            <ScoreNumber>ENL {stat.enlightenedWins}</ScoreNumber>
+            <ScoreNumber res>RES {stat.resistanceWins}</ScoreNumber>
+            <ScoreNumber enl>ENL {stat.enlightenedWins}</ScoreNumber>
             <Chart>
               todo...
             </Chart>
