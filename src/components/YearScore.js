@@ -1,49 +1,39 @@
-import React, { useEffect } from "react"
+import React from "react"
 import useScoresByYear from "../hooks/useScoresbyYear"
 import { ActiveScoreBox, Title, ScoreRes, ScoreEnl, Chart, ChartGrid } from "./Styled"
+import { ScoreDoughnut } from "./Charts"
+import styled from "styled-components"
 
+const ChartSlider = styled.div`
+    display: block;
+`
 
 const YearScore = ({ data }) => {
-  const { points, getYear } = useScoresByYear(data.allMarkdownRemark.group)
-  const [year, setYear] = React.useState(2015)
+  const { points } = useScoresByYear(data.allMarkdownRemark.group)
 
-  useEffect(() => {
-    const ticker = setInterval(() => {
-      if (year >= 2020) return setYear(2014)
-      setYear(year + 1)
-    }, 2000);
-
-    return () => {
-      clearInterval(ticker)
-    }
-  }, [year])
-
+  const withoutCurrentYear = points.filter(point => point.year !== '2020')
 
   return (
-    <div>
-      <pre>{JSON.stringify(getYear(year), null, 2)}</pre>
-      <hr />
-      <ChartGrid>
-        {points && points.map(({ year, winner, resistanceWins, enlightenedWins }) => (
-          <ActiveScoreBox key={year}>
-            <Title>CYCLES WON {year}</Title>
-            <ScoreRes
-              winner={resistanceWins > enlightenedWins}>
-              RES {resistanceWins || ''}
-            </ScoreRes>
-            <ScoreEnl
-              winner={resistanceWins < enlightenedWins}>
-              ENL {enlightenedWins || ''}
-            </ScoreEnl>
-            <Chart>
-              todo...
-            </Chart>
-          </ActiveScoreBox>
+    <ChartGrid>
+      {withoutCurrentYear && withoutCurrentYear.map((stat) => (
+        <ActiveScoreBox key={stat.year}>
+          <Title>CYCLES WON {stat.year}</Title>
+          <ScoreRes
+            winner={stat.resistanceWins > stat.enlightenedWins}>
+            RES {stat.resistanceWins || ''}
+          </ScoreRes>
+          <ScoreEnl
+            winner={stat.resistanceWins < stat.enlightenedWins}>
+            ENL {stat.enlightenedWins || ''}
+          </ScoreEnl>
+          <Chart>
+            <ScoreDoughnut data={stat} />
+          </Chart>
+        </ActiveScoreBox>
 
-        ))
-        }
-      </ChartGrid>
-    </div>
+      ))
+      }
+    </ChartGrid>
 
   )
 }
