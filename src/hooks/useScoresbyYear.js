@@ -22,7 +22,7 @@ export default function useScoresByYear(years) {
       const resistanceWins = entry.cycles.map(({ cycle }) => cycle).filter(score => score.res > score.enl).length
       const enlightenedWins = entry.cycles.map(({ cycle }) => cycle).filter(score => score.res < score.enl).length
       // overall winner of entry
-      const winner = resistanceWins > enlightenedWins ? "resistance" : "enlightened"
+      const winner = resistanceWins > enlightenedWins ? "res" : "enl"
       scores.push({ year, winner, resistancePoints, resistanceWins, enlightenedPoints, enlightenedWins })
     });
 
