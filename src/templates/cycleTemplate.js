@@ -19,10 +19,9 @@ const SitrepWrapper = styled.div`
 `
 
 
-export default function CycleTemplate({ data, location }) {
+export default function CycleTemplate({ data }) {
 
   const { resistance, enlightened, cell, cycleDate, sitrep } = data.markdownRemark.frontmatter
-  // const winner = resistance > enlightened ? 'res' : 'enl'
 
   return (
     <Layout>

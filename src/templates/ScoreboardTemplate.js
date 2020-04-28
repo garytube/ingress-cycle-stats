@@ -6,9 +6,10 @@ import Scoreboard from "../components/Scoreboard";
 import YearScore from "../components/YearScore";
 
 
-const ScoreboardPage = ({ data }) => {
+const ScoreboardTemplate = ({ data, pageContext }) => {
   const [activeCycle, setActiveCycle] = useState({ cycleDate: null, enl: 0, res: 0 })
   const { res, enl, cycleDate } = activeCycle
+
   return (
     <Layout>
       <ActiveScoreBox>
@@ -17,12 +18,12 @@ const ScoreboardPage = ({ data }) => {
         <ScoreEnl winner={res < enl}>ENL {enl || ''}</ScoreEnl>
       </ActiveScoreBox>
       <Scoreboard data={data} setActiveCycle={setActiveCycle} />
-      <YearScore data={data} />
+      <YearScore scores={pageContext.scores} />
     </Layout>
   )
 }
 
-export default ScoreboardPage
+export default ScoreboardTemplate
 
 
 export const query = graphql`

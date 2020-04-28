@@ -2,10 +2,12 @@ import React from 'react'
 import { ScoreBlock, YearWrapper, Title } from './Styled'
 
 function Scoreboard({ data, setActiveCycle }) {
+  const years = data.allMarkdownRemark.group
+
   return (
     <div>
       {
-        data.allMarkdownRemark.group.reverse().map(({ year, cycles }) => (
+        years.reverse().map(({ year, cycles }) => (
           <Year key={year} year={year}>
             {cycles.map(({ cycle }) => (
               <ScoreBlock
@@ -26,10 +28,9 @@ function Scoreboard({ data, setActiveCycle }) {
 export default React.memo(Scoreboard)
 
 
-export const Year = ({ year, children }) =>
+export const Year = React.memo(({ year, children }) =>
   <YearWrapper>
     <Title>{year}</Title>
     {children}
   </YearWrapper>
-
-
+)
