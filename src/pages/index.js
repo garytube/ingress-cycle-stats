@@ -1,20 +1,20 @@
 import React, { useState } from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/Layout"
-import { ActiveScoreBox, Title, ScoreNumber } from "../components/Styled"
+import { ActiveScoreBox, Title, ScoreRes, ScoreEnl } from "../components/Styled"
 import Scoreboard from "../components/Scoreboard";
 import YearScore from "../components/YearScore";
 
 
 const ScoreboardPage = ({ data }) => {
-  const [activeCycle, setActiveCycle] = useState(null)
-
+  const [activeCycle, setActiveCycle] = useState({ cycleDate: null, enl: 0, res: 0 })
+  const { res, enl, cycleDate } = activeCycle
   return (
     <Layout>
       <ActiveScoreBox>
-        <Title>{activeCycle?.cycleDate || "[HOVER OVER A CELL]"}</Title>
-        <ScoreNumber>RES {activeCycle?.res || ''}</ScoreNumber>
-        <ScoreNumber>ENL {activeCycle?.enl || ''}</ScoreNumber>
+        <Title>{cycleDate || "[HOVER OVER A CELL]"}</Title>
+        <ScoreRes winner={res > enl}>RES {res || ''}</ScoreRes>
+        <ScoreEnl winner={res < enl}>ENL {enl || ''}</ScoreEnl>
       </ActiveScoreBox>
       <Scoreboard data={data} setActiveCycle={setActiveCycle} />
       <YearScore data={data} />
