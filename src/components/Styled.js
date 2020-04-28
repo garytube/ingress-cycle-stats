@@ -40,10 +40,34 @@ margin: 1rem  auto;
 `
 
 export const ScoreNumber = styled.span`
-  padding: 0.25em 0.5em;
+  padding: 0.1em 0.25em;
   font-size: 21px;
   border-radius: 0;
   letter-spacing: 0.1em;
   font-weight: 300;
   font-family: 'coda';
 `
+
+
+
+export const ScoreRes = styled(ScoreNumber)`
+color:  ${props => props.winner ? "#000000" : "#04eaf5"};
+background:  ${props => props.winner ? "#04eaf5" : "transparent"};
+  `
+
+export const ScoreEnl = styled(ScoreNumber)`
+  color:  ${props => props.winner ? "#000000" : "#04ff46"};
+  background:  ${props => props.winner ? "#04ff46" : "transparent"};
+    `
+
+export const ChartGrid = styled.div`
+    display: grid;
+    grid-template-columns: 400px 400px;
+    grid-auto-flow: row;
+    justify-content: center;
+    justify-items: center;
+    grid-gap: 20px 30px;
+  `
+export const Chart = styled.div`
+    display: block;
+  `
