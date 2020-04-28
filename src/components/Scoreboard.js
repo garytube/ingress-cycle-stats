@@ -1,16 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { ScoreBlock, YearWrapper, Title } from './Styled'
 
 function Scoreboard({ data, setActiveCycle }) {
-  const [state, setState] = useState([])
-
-  useEffect(() => setState(data.allMarkdownRemark.group.reverse()), [data])
-
-
   return (
     <div>
       {
-        state.map(({ year, cycles }) => (
+        data.allMarkdownRemark.group.reverse().map(({ year, cycles }) => (
           <Year key={year} year={year}>
             {cycles.map(({ cycle }) => (
               <ScoreBlock
