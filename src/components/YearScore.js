@@ -37,7 +37,7 @@ const YearScore = ({ data }) => {
       <hr />
       <ChartGrid>
         {points && points.map(stat => (
-          <ActiveScoreBox>
+          <ActiveScoreBox key={stat.year}>
             <Title>CYCLES WON {stat.year}</Title>
             <ScoreNumber>RES {stat.resistanceWins}</ScoreNumber>
             <ScoreNumber>ENL {stat.enlightenedWins}</ScoreNumber>
