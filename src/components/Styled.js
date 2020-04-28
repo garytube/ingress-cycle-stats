@@ -1,27 +1,37 @@
 import styled, { css } from "styled-components";
 import { Link } from 'gatsby';
 
+export const COLOR_RESISTANCE = "#04eaf5"
+export const COLOR_ENLIGHTENED = "#04ff46"
+
 export const YearWrapper = styled.div`
-  display: block;
-  clear:both
+  display: flex;
+  flex-wrap: wrap;
 `
 
 export const ScoreBlock = styled(Link)`
   display: inline-block;
-  height: 25px;
-  width: 25px;
+  height: 20px;
+  width: 20px;
   padding: 0;
-  border: 1px solid black;
-  border-bottom: 0;
-  &:hover {
-    border-color: black;
-  };
+  margin: 1px;
+  transition:all 0.5s ease;
+  &:hover, &:focus {
+    box-shadow: 0 0 10px 2px rgba(0,0,0,0.6), inset 0 0 5px 1px rgba(0,0,0,0.2);
+    z-index: 10;
+    border-radius: 4px;
+    transform: scale(1.3) rotate(142deg);
+  }
+  @media(min-width: 768px) {
+    height: 25px;
+    width: 25px;
+    }
 
   ${props => props.winner === 'res' && css`
-    background: #04eaf5
+    background: ${COLOR_RESISTANCE}
   `}
   ${props => props.winner === 'enl' && css`
-    background: #04ff46
+    background: ${COLOR_ENLIGHTENED}
   `}
 `
 
@@ -32,6 +42,7 @@ margin: 0.5em 0;
 font-size: 1.425rem;
 text-transform: uppercase;
 letter-spacing: 2px;
+width: 100%
 `
 
 export const ActiveScoreBox = styled.div`
@@ -51,23 +62,29 @@ export const ScoreNumber = styled.span`
 
 
 export const ScoreRes = styled(ScoreNumber)`
-color:  ${props => props.winner ? "#000000" : "#04eaf5"};
-background:  ${props => props.winner ? "#04eaf5" : "transparent"};
+color:  ${props => props.winner ? "#000000" : COLOR_RESISTANCE};
+background:  ${props => props.winner ? COLOR_RESISTANCE : "transparent"};
   `
 
 export const ScoreEnl = styled(ScoreNumber)`
-  color:  ${props => props.winner ? "#000000" : "#04ff46"};
-  background:  ${props => props.winner ? "#04ff46" : "transparent"};
+  color:  ${props => props.winner ? "#000000" : COLOR_ENLIGHTENED};
+  background:  ${props => props.winner ? COLOR_ENLIGHTENED : "transparent"};
     `
 
 export const ChartGrid = styled.div`
     display: grid;
-    grid-template-columns: 400px 400px;
-    grid-auto-flow: row;
     justify-content: center;
     justify-items: center;
-    grid-gap: 20px 30px;
+    grid-auto-flow: row;
+    grid-gap: 10px;
+    grid-template-columns: 1fr;
+
+    @media(min-width: 768px) {
+      grid-gap: 20px 30px;
+      grid-template-columns: 400px 400px;
+      }
   `
 export const Chart = styled.div`
     display: block;
+    margin: 1em auto
   `
