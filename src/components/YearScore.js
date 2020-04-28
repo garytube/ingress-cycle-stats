@@ -1,19 +1,7 @@
 import React, { useEffect } from "react"
 import useScoresByYear from "../hooks/useScoresbyYear"
-import { ActiveScoreBox, Title, ScoreNumber } from "./Styled"
-import styled from "styled-components"
+import { ActiveScoreBox, Title, ScoreRes, ScoreEnl, Chart, ChartGrid } from "./Styled"
 
-const ChartGrid = styled.div`
-  display: grid;
-  grid-template-columns: 400px 400px;
-  grid-auto-flow: row;
-  justify-content: center;
-  justify-items: center;
-  grid-gap: 20px 30px;
-`
-const Chart = styled.div`
-  display: block;
-`
 
 const YearScore = ({ data }) => {
   const { points, getYear } = useScoresByYear(data.allMarkdownRemark.group)
@@ -36,11 +24,17 @@ const YearScore = ({ data }) => {
       <pre>{JSON.stringify(getYear(year), null, 2)}</pre>
       <hr />
       <ChartGrid>
-        {points && points.map(stat => (
-          <ActiveScoreBox key={stat.year}>
-            <Title>CYCLES WON {stat.year}</Title>
-            <ScoreNumber res>RES {stat.resistanceWins}</ScoreNumber>
-            <ScoreNumber enl>ENL {stat.enlightenedWins}</ScoreNumber>
+        {points && points.map(({ year, winner, resistanceWins, enlightenedWins }) => (
+          <ActiveScoreBox key={year}>
+            <Title>CYCLES WON {year}</Title>
+            <ScoreRes
+              winner={resistanceWins > enlightenedWins}>
+              RES {resistanceWins || ''}
+            </ScoreRes>
+            <ScoreEnl
+              winner={resistanceWins < enlightenedWins}>
+              ENL {enlightenedWins || ''}
+            </ScoreEnl>
             <Chart>
               todo...
             </Chart>
