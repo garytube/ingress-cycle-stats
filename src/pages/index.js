@@ -1,29 +1,13 @@
 import React, { useState } from "react"
-import { useStaticQuery, graphql } from "gatsby"
+import { graphql } from "gatsby"
 import Layout from "../components/Layout"
 import { ActiveScoreBox, Title, ScoreNumber } from "../components/Styled"
 import Scoreboard from "../components/Scoreboard";
 import YearScore from "../components/YearScore";
 
 
-const ScoreboardPage = () => {
+const ScoreboardPage = ({ data }) => {
   const [activeCycle, setActiveCycle] = useState(null)
-  const data = useStaticQuery(graphql`
-      {
-        allMarkdownRemark {
-          group(field: frontmatter___cycleYear) {
-            year: fieldValue
-            cycles: nodes {
-              cycle: frontmatter {
-                cycleDate
-                enl: enlightened
-                res: resistance
-              }
-            }
-          }
-        }
-      }
-`)
 
   return (
     <Layout>
@@ -39,4 +23,22 @@ const ScoreboardPage = () => {
 }
 
 export default ScoreboardPage
+
+
+export const query = graphql`
+{
+  allMarkdownRemark {
+    group(field: frontmatter___cycleYear) {
+      year: fieldValue
+      cycles: nodes {
+        cycle: frontmatter {
+          cycleDate
+          enl: enlightened
+          res: resistance
+        }
+      }
+    }
+  }
+}
+`
 
