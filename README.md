@@ -2,7 +2,7 @@
 
 # 💏 Ingress Cycle History 
 ### [ NR02-GOLF-04 ] - BERLIN
-![preview](docs/preview)
+![preview](docs/preview.jpg)
 ## [🌐 >SEE IT LIVE< ](https://ingress.netlify.app)
 
 A simple React App that shows the Cycle History for a Cell.
