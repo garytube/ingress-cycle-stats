@@ -1,5 +1,6 @@
 import React from 'react'
 import { ScoreBlock, YearWrapper, Title } from './Styled'
+import { CycleLine } from './Charts'
 
 function Scoreboard({ data, setActiveCycle }) {
   const years = data.allMarkdownRemark.group
@@ -17,6 +18,8 @@ function Scoreboard({ data, setActiveCycle }) {
                 onMouseOver={() => setActiveCycle(cycle)}
                 winner={cycle.enl < cycle.res ? 'res' : 'enl'} />
             ))}
+            {year !== "2020" && <CycleLine cycles={cycles} />}
+
           </Year>
         ))
       }
