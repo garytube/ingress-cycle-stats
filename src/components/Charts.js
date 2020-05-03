@@ -1,7 +1,9 @@
 import React, { useState } from "react"
-import { Doughnut, Line } from "react-chartjs-2"
+import { Doughnut, Line, defaults } from "react-chartjs-2"
 import VisibilitySensor from "react-visibility-sensor"
 import { COLOR_RESISTANCE, COLOR_ENLIGHTENED, ChartSpacer } from "./Styled"
+
+defaults.global.animation.duration = 2000
 
 export function ScoreDoughnut({ data }) {
   const [visable, setVisable] = useState(false)
@@ -16,7 +18,10 @@ export function ScoreDoughnut({ data }) {
   }
 
   return (
-    <VisibilitySensor onChange={isVisible => setVisable(isVisible)}>
+    <VisibilitySensor
+      partialVisibility
+      onChange={isVisible => setVisable(isVisible)}
+    >
       <ChartSpacer height="150px">
         {visable && (
           <Doughnut
@@ -91,7 +96,10 @@ export function ScoreLine({ data }) {
   }
 
   return (
-    <VisibilitySensor onChange={isVisible => setVisable(isVisible)}>
+    <VisibilitySensor
+      partialVisibility
+      onChange={isVisible => setVisable(isVisible)}
+    >
       <ChartSpacer height="400px">
         {visable && <Line data={foo} options={options} />}
       </ChartSpacer>
@@ -159,7 +167,10 @@ export function CycleLine({ cycles }) {
   }
 
   return (
-    <VisibilitySensor onChange={isVisible => setVisable(isVisible)}>
+    <VisibilitySensor
+      partialVisibility
+      onChange={isVisible => setVisable(isVisible)}
+    >
       <ChartSpacer>
         {visable && <Line data={foo} options={{ ...options, legend: false }} />}
       </ChartSpacer>
