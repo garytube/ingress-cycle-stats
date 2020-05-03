@@ -1,8 +1,11 @@
-import React from "react"
+import React, { useState } from "react"
 import { Doughnut, Line } from "react-chartjs-2"
-import { COLOR_RESISTANCE, COLOR_ENLIGHTENED } from "./Styled"
+import VisibilitySensor from "react-visibility-sensor"
+import { COLOR_RESISTANCE, COLOR_ENLIGHTENED, ChartSpacer } from "./Styled"
 
 export function ScoreDoughnut({ data }) {
+  const [visable, setVisable] = useState(false)
+
   const options = {
     legend: {
       display: false,
@@ -13,23 +16,30 @@ export function ScoreDoughnut({ data }) {
   }
 
   return (
-    <Doughnut
-      data={{
-        labels: ["Resistance", "Enlightened"],
-        datasets: [
-          {
-            borderColor: "#000",
-            data: [data.resistanceWins, data.enlightenedWins],
-            backgroundColor: [COLOR_RESISTANCE, COLOR_ENLIGHTENED],
-          },
-        ],
-      }}
-      options={options}
-    />
+    <VisibilitySensor onChange={isVisible => setVisable(isVisible)}>
+      <ChartSpacer height="150px">
+        {visable && (
+          <Doughnut
+            data={{
+              labels: ["Resistance", "Enlightened"],
+              datasets: [
+                {
+                  borderColor: "#000",
+                  data: [data.resistanceWins, data.enlightenedWins],
+                  backgroundColor: [COLOR_RESISTANCE, COLOR_ENLIGHTENED],
+                },
+              ],
+            }}
+            options={options}
+          />
+        )}
+      </ChartSpacer>
+    </VisibilitySensor>
   )
 }
 
 export function ScoreLine({ data }) {
+  const [visable, setVisable] = useState(false)
   const style = {
     fill: false,
     lineTension: 0.3,
@@ -80,10 +90,17 @@ export function ScoreLine({ data }) {
     },
   }
 
-  return <Line data={foo} options={options} />
+  return (
+    <VisibilitySensor onChange={isVisible => setVisable(isVisible)}>
+      <ChartSpacer height="400px">
+        {visable && <Line data={foo} options={options} />}
+      </ChartSpacer>
+    </VisibilitySensor>
+  )
 }
 
-export function CycleLine({ cycles, height = "100px" }) {
+export function CycleLine({ cycles }) {
+  const [visable, setVisable] = useState(false)
   const style = {
     fill: false,
     lineTension: 0.3,
@@ -142,13 +159,10 @@ export function CycleLine({ cycles, height = "100px" }) {
   }
 
   return (
-    <div
-      style={{ height: "100px", width: "100%", margin: "10px auto 5px auto" }}
-    >
-      <Line
-        data={foo}
-        options={{ ...options, legend: false, animation: false }}
-      />
-    </div>
+    <VisibilitySensor onChange={isVisible => setVisable(isVisible)}>
+      <ChartSpacer>
+        {visable && <Line data={foo} options={{ ...options, legend: false }} />}
+      </ChartSpacer>
+    </VisibilitySensor>
   )
 }

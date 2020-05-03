@@ -110,3 +110,9 @@ export const Chart = styled.div`
   display: block;
   margin: 1em auto;
 `
+
+export const ChartSpacer = styled.div`
+  height: ${props => (props.height ? props.height : "100px")};
+  width: ${props => (props.width ? props.width : "100%")};
+  margin: 10px auto 5px auto;
+`

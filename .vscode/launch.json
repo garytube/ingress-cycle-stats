@@ -1,6 +1,7 @@
 {
   "version": "0.2.0",
   "configurations": [
+
     {
       "name": "Gatsby develop",
       "type": "node",
@@ -10,7 +11,8 @@
       "args": ["develop"],
       "stopOnEntry": false,
       "runtimeArgs": ["--nolazy"],
-      "sourceMaps": false
+      "sourceMaps": false,
+      "console": "integratedTerminal"
     },
     {
       "name": "Gatsby build",
@@ -22,6 +24,14 @@
       "stopOnEntry": false,
       "runtimeArgs": ["--nolazy"],
       "sourceMaps": false
+    },
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Attach to Chrome",
+      "port": 8000,
+      "webRoot": "${workspaceFolder}",
+      "timeout": 5000
     }
   ]
 }

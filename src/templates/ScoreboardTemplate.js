@@ -29,7 +29,7 @@ const ScoreboardTemplate = ({ data, pageContext }) => {
       </ActiveScoreBox>
       <Scoreboard data={pageContext.years} setActiveCycle={setActiveCycle} />
 
-      <div style={{ height: "300px", margin: "2em auto", textAlign: "center" }}>
+      <div style={{ margin: "2em auto", textAlign: "center" }}>
         <Title>MINDUNITS YEAR TOTAL</Title>
         <ScoreLine data={datasetOverall} />
       </div>
