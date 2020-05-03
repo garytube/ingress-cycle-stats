@@ -46,6 +46,7 @@ export const query = graphql`
       group(field: frontmatter___cycleYear) {
         year: fieldValue
         cycles: nodes {
+          sitrep: html
           cycle: frontmatter {
             cycleDate
             enl: enlightened

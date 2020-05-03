@@ -1,5 +1,4 @@
-import styled, { css } from "styled-components";
-import { Link } from 'gatsby';
+import styled, { css } from "styled-components"
 
 export const COLOR_RESISTANCE = "#04eaf5"
 export const COLOR_ENLIGHTENED = "#04ff46"
@@ -9,10 +8,11 @@ export const YearWrapper = styled.div`
   flex-wrap: wrap;
 `
 
-export const ScoreBlock = styled(Link)`
+export const ScoreBlock = styled.div`
   display: inline-block;
   height: 20px;
   width: 20px;
+  position:relative;
   padding: 0;
   margin: 1px;
   transition:all 0.5s ease;
@@ -27,27 +27,51 @@ export const ScoreBlock = styled(Link)`
     width: 25px;
     }
 
-  ${props => props.winner === 'res' && css`
-    background: ${COLOR_RESISTANCE}
-  `}
-  ${props => props.winner === 'enl' && css`
-    background: ${COLOR_ENLIGHTENED}
-  `}
+  ${props =>
+    props.winner === "res" &&
+    css`
+      background: ${COLOR_RESISTANCE};
+    `}
+  ${props =>
+    props.winner === "enl" &&
+    css`
+      background: ${COLOR_ENLIGHTENED};
+    `}
+
+  ${props =>
+    props.sitrep &&
+    css`
+      &:before {
+        content: "";
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        top: 8px;
+        background: rgba(17, 17, 17, 0.4);
+        left: 0;
+        right: 0;
+        margin: auto;
+      }
+    `}
+
+
+
 `
 
 export const Title = styled.h2`
-font-family: 'oswald', serif;
-display: block;
-margin: 0.5em 0;
-font-size: 1.425rem;
-text-transform: uppercase;
-letter-spacing: 2px;
-width: 100%
+  font-family: "oswald", serif;
+  display: block;
+  margin: 0.5em 0;
+  font-size: 1.425rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  width: 100%;
 `
 
 export const ActiveScoreBox = styled.div`
-text-align: center;
-margin: 1rem  auto;
+  text-align: center;
+  margin: 1rem auto;
 `
 
 export const ScoreNumber = styled.span`
@@ -56,35 +80,33 @@ export const ScoreNumber = styled.span`
   border-radius: 0;
   letter-spacing: 0.1em;
   font-weight: 300;
-  font-family: 'coda';
+  font-family: "coda";
 `
 
-
-
 export const ScoreRes = styled(ScoreNumber)`
-color:  ${props => props.winner ? "#000000" : COLOR_RESISTANCE};
-background:  ${props => props.winner ? COLOR_RESISTANCE : "transparent"};
-  `
+  color: ${props => (props.winner ? "#000000" : COLOR_RESISTANCE)};
+  background: ${props => (props.winner ? COLOR_RESISTANCE : "transparent")};
+`
 
 export const ScoreEnl = styled(ScoreNumber)`
-  color:  ${props => props.winner ? "#000000" : COLOR_ENLIGHTENED};
-  background:  ${props => props.winner ? COLOR_ENLIGHTENED : "transparent"};
-    `
+  color: ${props => (props.winner ? "#000000" : COLOR_ENLIGHTENED)};
+  background: ${props => (props.winner ? COLOR_ENLIGHTENED : "transparent")};
+`
 
 export const ChartGrid = styled.div`
-    display: grid;
-    justify-content: center;
-    justify-items: center;
-    grid-auto-flow: row;
-    grid-gap: 10px;
-    grid-template-columns: 1fr;
+  display: grid;
+  justify-content: center;
+  justify-items: center;
+  grid-auto-flow: row;
+  grid-gap: 10px;
+  grid-template-columns: 1fr;
 
-    @media(min-width: 768px) {
-      grid-gap: 20px 30px;
-      grid-template-columns: 400px 400px;
-      }
-  `
+  @media (min-width: 768px) {
+    grid-gap: 20px 30px;
+    grid-template-columns: 400px 400px;
+  }
+`
 export const Chart = styled.div`
-    display: block;
-    margin: 1em auto
-  `
+  display: block;
+  margin: 1em auto;
+`
