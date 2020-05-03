@@ -16,8 +16,7 @@ function Scoreboard({ data, setActiveCycle }) {
               winner={cycle.enl < cycle.res ? "res" : "enl"}
             />
           ))}
-          {/* <CycleLine cycles={cycles} /> */}
-          {year !== "2020" && <CycleLine cycles={cycles} />}
+          <CycleLine cycles={cycles} />
         </Year>
       ))}
     </div>
