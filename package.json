@@ -1,8 +1,7 @@
 {
-  "name": "gatsby-starter-hello-world",
-  "private": true,
-  "description": "A simplified bare-bones starter for Gatsby",
-  "version": "0.1.0",
+  "name": "ingress-cycle-stats",
+  "description": "A simple React App that shows the Cycle History for a Cell.",
+  "version": "1.0.0",
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
@@ -17,10 +16,13 @@
     "babel-plugin-styled-components": "^1.10.7",
     "chart.js": "^2.9.3",
     "gatsby": "^2.20.35",
+    "gatsby-plugin-netlify-cms": "^4.3.1",
+    "gatsby-plugin-offline": "^3.2.1",
     "gatsby-plugin-react-helmet": "^3.2.5",
     "gatsby-plugin-styled-components": "^3.2.4",
     "gatsby-source-filesystem": "^2.2.5",
     "gatsby-transformer-remark": "^2.7.5",
+    "netlify-cms-app": "^2.12.12",
     "react": "^16.12.0",
     "react-chartjs-2": "^2.9.0",
     "react-dom": "^16.12.0",
@@ -34,10 +36,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-hello-world"
+    "url": "https://github.com/garytube/ingress-cycle-stats"
   },
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/garytube/ingress-cycle-statsissues"
   },
   "husky": {
     "hooks": {
