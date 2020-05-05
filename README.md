@@ -20,14 +20,12 @@ It's all Markdown. Example:
 
 ```markdown
 ---
-
 cell: NR02-GOLF-04
 cycleYear: 2014
 cycle: 02
 cycleDate: 2014-02
 resistance: 231000
 enlightened: 66000
-
 ---
 
 Sitrep written in markdown goes here....
