@@ -12,7 +12,7 @@ collections:
     label_singular: 'Cycle'
     folder: 'src/cycles' # The path to the folder where the documents are stored
     create: true # Allow users to create new documents in this collection
-    extension: 'yml'
+    extension: 'md'
     editor:
       preview: false
     summary: 'Cycle {{cycle}}/{{cycleYear}} | RES: {{resistance}} ENL: {{enlightened}} '
