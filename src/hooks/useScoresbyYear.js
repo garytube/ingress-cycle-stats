@@ -1,7 +1,4 @@
-import { useState, useEffect } from 'react'
-
-
-
+import { useState, useEffect } from "react"
 
 export default function useScoresByYear(data) {
   const [points, setPoints] = useState(data)
@@ -9,8 +6,7 @@ export default function useScoresByYear(data) {
   // on mount or change
   useEffect(() => setPoints(data), [data])
 
-  const getYear = (year) => points.filter(score => score.year === `${year}`)[0]
+  const getYear = year => points.filter(score => score.year === `${year}`)[0]
 
   return { points, getYear }
 }
-
