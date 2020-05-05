@@ -16,6 +16,7 @@
     "babel-plugin-styled-components": "^1.10.7",
     "chart.js": "^2.9.3",
     "gatsby": "^2.20.35",
+    "gatsby-plugin-manifest": "^2.4.2",
     "gatsby-plugin-netlify-cms": "^4.3.1",
     "gatsby-plugin-offline": "^3.2.1",
     "gatsby-plugin-react-helmet": "^3.2.5",
