@@ -2,7 +2,13 @@ import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/Layout"
 import styled from "styled-components"
-import { Title, ActiveScoreBox, ScoreNumber } from "../components/Styled"
+import {
+  Title,
+  ActiveScoreBox,
+  ScoreNumber,
+  Button,
+} from "../components/Styled"
+import css from "./cycleTemplate.module.css"
 
 const Subtitle = styled.div`
   color: #777;
@@ -41,11 +47,15 @@ export default function CycleTemplate({ data }) {
       </ActiveScoreBox>
       <SitrepWrapper>
         {data.markdownRemark.sitrep ? (
-          <div dangerouslySetInnerHTML={{ __html: sitrep }} />
+          <div
+            className={css.sitrep}
+            dangerouslySetInnerHTML={{ __html: sitrep }}
+          />
         ) : (
           "NO SITREP IN DATABASE - WRITE ONE!"
         )}
       </SitrepWrapper>
+      <Button>go back</Button>
     </Layout>
   )
 }

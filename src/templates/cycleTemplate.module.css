@@ -1,0 +1,27 @@
+.sitrep {
+  font-family: monospace;
+}
+
+.sitrep p {
+  font-family: inherit;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+
+.sitrep h1 {
+  font-size: 2rem;
+}
+
+.sitrep h2 {
+  font-size: 1.825rem;
+}
+
+.sitrep h3 {
+  font-size: 1.625rem;
+}
+
+.sitrep a {
+  color: #00e3ff;
+  padding: 0.2em;
+}
