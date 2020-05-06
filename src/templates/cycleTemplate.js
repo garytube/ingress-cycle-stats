@@ -21,9 +21,9 @@ export default function CycleTemplate({ data }) {
   const {
     resistance,
     enlightened,
+    cycleYear,
     cell,
-    cycleDate,
-    sitrep,
+    cycle,
   } = data.markdownRemark.frontmatter
 
   return (
@@ -32,29 +32,31 @@ export default function CycleTemplate({ data }) {
         <Title>
           SITREP
           <Subtitle>
-            {cell} | {cycleDate}
+            {cell} | {cycle + "-" + cycleYear}
           </Subtitle>
         </Title>
         <ScoreNumber>RES: {resistance}</ScoreNumber>
         <ScoreNumber>ENL: {enlightened}</ScoreNumber>
       </ActiveScoreBox>
       <SitrepWrapper>
-        {sitrep ? "danger...fooo" : "NO SITREP IN DATABASE - WRITE ONE!"}
+        {data.markdownRemark.sitrep
+          ? "danger...fooo"
+          : "NO SITREP IN DATABASE - WRITE ONE!"}
       </SitrepWrapper>
     </Layout>
   )
 }
 
 export const pageQuery = graphql`
-  query($cycleDate: String!) {
-    markdownRemark(frontmatter: { cycleDate: { eq: $cycleDate } }) {
+  query($slug: String!) {
+    markdownRemark(fields: { slug: { eq: $slug } }) {
       sitrep: html
       frontmatter {
         resistance
         enlightened
         cycleYear
         cell
-        cycleDate
+        cycle
       }
     }
   }

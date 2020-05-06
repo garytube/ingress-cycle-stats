@@ -9,7 +9,7 @@ function Scoreboard({ data, setActiveCycle }) {
         <Year key={year} year={year}>
           {cycles.map(({ cycle }) => (
             <ScoreBlock
-              key={cycle.cycleDate}
+              key={cycle.cycle}
               onFocus={() => setActiveCycle(cycle)}
               onMouseOver={() => setActiveCycle(cycle)}
               winner={cycle.enl < cycle.res ? "res" : "enl"}

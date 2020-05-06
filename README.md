@@ -22,7 +22,7 @@ It's all Markdown. Example:
 ---
 cell: NR02-GOLF-04
 cycleYear: 2014
-cycle: 02
+cycle: 2
 cycleDate: 2014-02
 resistance: 231000
 enlightened: 66000

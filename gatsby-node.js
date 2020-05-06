@@ -1,4 +1,5 @@
 const path = require(`path`)
+const { createFilePath } = require(`gatsby-source-filesystem`)
 
 const generateScores = data => {
   let scores = []
@@ -39,8 +40,8 @@ exports.createPages = async ({ graphql, actions }) => {
       allMarkdownRemark {
         edges {
           node {
-            frontmatter {
-              cycleDate
+            fields {
+              slug
             }
           }
         }
@@ -55,7 +56,8 @@ exports.createPages = async ({ graphql, actions }) => {
           year: fieldValue
           cycles: nodes {
             cycle: frontmatter {
-              cycleDate
+              cycleYear
+              cycle
               enl: enlightened
               res: resistance
             }
@@ -64,34 +66,44 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     }
   `)
-
-  const scores = generateScores(yearsQuery.data.allMarkdownRemark.group)
+  const resultYears = yearsQuery.data.allMarkdownRemark.group
   createPage({
     path: "/",
     component: path.resolve(`src/templates/ScoreboardTemplate.js`),
     context: {
-      years: yearsQuery.data.allMarkdownRemark.group.reverse(),
-      scores,
+      years: resultYears.reverse(),
+      scores: generateScores(resultYears),
     },
   })
 
   const cycleTemplate = path.resolve(`src/templates/cycleTemplate.js`)
   queryResults.data.allMarkdownRemark.edges.forEach(({ node }) => {
     createPage({
-      path: `/cycle/${node.frontmatter.cycleDate}`,
+      path: node.fields.slug,
       component: cycleTemplate,
       context: {
-        scores,
-        cycleDate: `${node.frontmatter.cycleDate}`,
+        slug: node.fields.slug,
       },
     })
   })
 }
 
+exports.onCreateNode = ({ node, actions, getNode }) => {
+  const { createNodeField } = actions
+
+  if (node.internal.type === `MarkdownRemark`) {
+    const value = createFilePath({ node, getNode, basePath: "cycles/" })
+    createNodeField({
+      name: `slug`,
+      node,
+      value,
+    })
+  }
+}
 exports.createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions
   const typeDefs = `
-  type MarkdownRemark implements Node @dontInfer{
+  type MarkdownRemark implements Node {
     frontmatter: Frontmatter
   }
   type Frontmatter{
@@ -100,7 +112,7 @@ exports.createSchemaCustomization = ({ actions }) => {
     cycle: Int!
     cycleDate: String!
     resistance: Int!
-    enlightened: Int! 
+    enlightened: Int!
   }
 `
   createTypes(typeDefs)
