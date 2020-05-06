@@ -70,6 +70,10 @@ export const Title = styled.h2`
   letter-spacing: 2px;
   width: 100%;
 `
+export const Subtitle = styled.div`
+  color: #777;
+  font-weight: 300;
+`
 
 export const ActiveScoreBox = styled.div`
   text-align: center;
@@ -154,4 +158,13 @@ export const Button = styled.div`
   }
 
   ${({ color }) => type(color)}
+`
+
+export const Sitrep = styled.div`
+  background: rgba(51, 122, 183, 0.05);
+  padding: 1em 2em;
+  font-size: 14px;
+  color: #dadada;
+  line-height: 1.6em;
+  margin-bottom: 2rem;
 `

@@ -1,27 +1,15 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import Layout from "../components/Layout"
-import styled from "styled-components"
 import {
   Title,
+  Subtitle,
+  Sitrep,
   ActiveScoreBox,
   ScoreNumber,
   Button,
 } from "../components/Styled"
 import css from "./cycleTemplate.module.css"
-
-const Subtitle = styled.div`
-  color: #777;
-  font-weight: 300;
-`
-const SitrepWrapper = styled.div`
-  background: rgba(51, 122, 183, 0.05);
-  padding: 1em 2em;
-  font-size: 14px;
-  color: #dadada;
-  line-height: 1.6em;
-  margin-bottom: 2rem;
-`
 
 export default function CycleTemplate({ data }) {
   const {
@@ -45,17 +33,15 @@ export default function CycleTemplate({ data }) {
         <ScoreNumber>RES: {resistance}</ScoreNumber>
         <ScoreNumber>ENL: {enlightened}</ScoreNumber>
       </ActiveScoreBox>
-      <SitrepWrapper>
-        {data.markdownRemark.sitrep ? (
-          <div
-            className={css.sitrep}
-            dangerouslySetInnerHTML={{ __html: sitrep }}
-          />
-        ) : (
-          "NO SITREP IN DATABASE - WRITE ONE!"
-        )}
-      </SitrepWrapper>
-      <Button>go back</Button>
+      {data.markdownRemark.sitrep && (
+        <Sitrep
+          className={css.sitrep}
+          dangerouslySetInnerHTML={{ __html: sitrep }}
+        />
+      )}
+      <Link to="/">
+        <Button>go back</Button>
+      </Link>
     </Layout>
   )
 }
