@@ -25,6 +25,7 @@ export default function CycleTemplate({ data }) {
     cell,
     cycle,
   } = data.markdownRemark.frontmatter
+  const { sitrep } = data.markdownRemark
 
   return (
     <Layout>
@@ -39,9 +40,11 @@ export default function CycleTemplate({ data }) {
         <ScoreNumber>ENL: {enlightened}</ScoreNumber>
       </ActiveScoreBox>
       <SitrepWrapper>
-        {data.markdownRemark.sitrep
-          ? "danger...fooo"
-          : "NO SITREP IN DATABASE - WRITE ONE!"}
+        {data.markdownRemark.sitrep ? (
+          <div dangerouslySetInnerHTML={{ __html: sitrep }} />
+        ) : (
+          "NO SITREP IN DATABASE - WRITE ONE!"
+        )}
       </SitrepWrapper>
     </Layout>
   )
