@@ -110,7 +110,6 @@ export function ScoreLine({ data }) {
 export function CycleLine({ cycles }) {
   const [visable, setVisable] = useState(false)
   const style = {
-    fill: false,
     lineTension: 0.3,
     backgroundColor: "rgba(75,192,192,0)",
     borderColor: "rgba(75,192,192,1)",
@@ -118,18 +117,12 @@ export function CycleLine({ cycles }) {
     borderDash: [],
     borderDashOffset: 0.0,
     borderJoinStyle: "miter",
-    pointBorderColor: "rgba(75,192,192,0)",
-    pointBackgroundColor: "#000",
-    pointBorderWidth: 1,
-    pointHoverRadius: 5,
-    pointHoverBackgroundColor: "rgba(75,192,192,1)",
-    pointHoverBorderColor: "rgba(220,220,220,0)",
-    pointHoverBorderWidth: 2,
-    pointRadius: 0,
-    pointHitRadius: 10,
+    pointBorderWidth: 2,
+    pointRadius: 2,
+    pointHitRadius: 20,
   }
   const foo = {
-    labels: cycles.map((c, i) => c.cycle.cycleDate),
+    labels: cycles.map(({ cycle }) => cycle.cycle),
     datasets: [
       {
         ...style,
@@ -152,7 +145,7 @@ export function CycleLine({ cycles }) {
       xAxes: [
         {
           ticks: {
-            display: false,
+            // display: false,
           },
         },
       ],
