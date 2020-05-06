@@ -66,6 +66,7 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     }
   `)
+
   const resultYears = yearsQuery.data.allMarkdownRemark.group
   createPage({
     path: "/",
