@@ -143,7 +143,7 @@ export const Button = styled.div`
   letter-spacing: 0.05em;
   font-family: "oswald";
   padding: 0.5em 0.6em;
-  margin: 0 0 0.2rem 0;
+  margin: 0 0.2rem 0.2rem 0;
   display: inline-block;
   text-decoration: none !important;
   background: rgba(117, 117, 117, 0.2);

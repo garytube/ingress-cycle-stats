@@ -5,6 +5,7 @@ import { ActiveScoreBox, Title, ScoreRes, ScoreEnl } from "../components/Styled"
 import Scoreboard from "../components/Scoreboard"
 import YearScore from "../components/YearScore"
 import { ScoreLine } from "../components/Charts"
+import SitrepList from "../components/SitrepList"
 
 const ScoreboardTemplate = ({ data, pageContext }) => {
   const [activeCycle, setActiveCycle] = useState({
@@ -29,7 +30,7 @@ const ScoreboardTemplate = ({ data, pageContext }) => {
         <ScoreEnl winner={res < enl}>ENL {enl || ""}</ScoreEnl>
       </ActiveScoreBox>
       <Scoreboard data={pageContext.years} setActiveCycle={setActiveCycle} />
-
+      <SitrepList />
       <div style={{ margin: "2em auto", textAlign: "center" }}>
         <Title>MINDUNITS YEAR TOTAL</Title>
         <ScoreLine data={datasetOverall} />
