@@ -2,6 +2,8 @@ import styled, { css } from "styled-components"
 
 export const COLOR_RESISTANCE = "#04eaf5"
 export const COLOR_ENLIGHTENED = "#04ff46"
+export const COLOR_WARNING = "#ffff00"
+export const COLOR_DANGER = "#ff0047"
 
 export const YearWrapper = styled.div`
   display: flex;
@@ -115,4 +117,41 @@ export const ChartSpacer = styled.div`
   height: ${props => (props.height ? props.height : "100px")};
   width: ${props => (props.width ? props.width : "100%")};
   margin: 10px auto 5px auto;
+`
+
+const type = color => {
+  switch (color) {
+    case "res":
+      return `color: ${COLOR_RESISTANCE}; background: ${COLOR_RESISTANCE}14;`
+    case "enl":
+      return `color: ${COLOR_ENLIGHTENED}; background: ${COLOR_ENLIGHTENED}14;`
+    case "warning":
+      return `color: ${COLOR_WARNING}; background: ${COLOR_WARNING}14;`
+    case "danger":
+      return `color: ${COLOR_DANGER}; background: ${COLOR_DANGER}14;`
+    default:
+      return `color: rgb(117, 117, 117); background: rgba(117, 117, 117, 0.2);`
+  }
+}
+
+export const Button = styled.div`
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-family: "oswald";
+  padding: 0.5em 0.6em;
+  margin: 0 0 0.2rem 0;
+  display: inline-block;
+  text-decoration: none !important;
+  background: rgba(117, 117, 117, 0.2);
+  color: rgb(117, 117, 117);
+  font-size: 14px;
+  border: 1px solid transparent;
+  transition: 0.2s ease;
+  cursor: pointer;
+  &:hover,
+  &:focus {
+    border-color: inherit;
+  }
+
+  ${({ color }) => type(color)}
 `
