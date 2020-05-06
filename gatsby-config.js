@@ -24,6 +24,12 @@ module.exports = {
         theme_color: "#04eaf5",
         display: "standalone",
         icon: "src/images/maskable_icon.png",
+        icon_options: {
+          // For all the options available, please see:
+          // https://developer.mozilla.org/en-US/docs/Web/Manifest
+          // https://w3c.github.io/manifest/#purpose-member
+          purpose: `maskable`,
+        },
       },
     },
     {
