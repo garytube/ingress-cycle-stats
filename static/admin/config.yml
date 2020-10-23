@@ -4,7 +4,6 @@ backend:
 media_folder: static/img
 public_folder: /img
 site_url: https://ingress.netlify.app/
-publish_mode: editorial_workflow
 local: "de"
 collections:
   - name: 'cycle' # Used in routes, e.g., /admin/collections/blog
@@ -21,8 +20,8 @@ collections:
       - { label: 'cell', name: 'cell', widget: 'hidden', default: 'NR02-GOLF-04' }
       - { label: 'year', name: 'cycleYear', widget: 'number' }
       - { label: 'cycle', name: 'cycle', widget: 'number' }
-      - { label: 'Resistance', name: 'resistance', widget: 'string' }
-      - { label: 'Enlightened', name: 'enlightened', widget: 'string' }
+      - { label: 'Resistance', name: 'resistance', widget: 'number' }
+      - { label: 'Enlightened', name: 'enlightened', widget: 'number' }
       - { label: 'STIREP', name: 'body', required: false, widget: 'markdown' }
       - { label: 'Featured Image', required: false, name: 'thumbnail', widget: 'image' }
       - { label: 'Publish Date', name: 'date', widget: 'datetime' }

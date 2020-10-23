@@ -7,10 +7,10 @@ const generateScores = data => {
     const year = entry.year
     // points
     const resistancePoints = entry.cycles
-      .map(({ cycle }) => cycle.res)
+      .map(({ cycle }) => cycle.res | 0)
       .reduce((total, score) => total + score)
     const enlightenedPoints = entry.cycles
-      .map(({ cycle }) => cycle.enl)
+      .map(({ cycle }) => cycle.enl | 0)
       .reduce((total, score) => total + score)
     // win streaks
     const resistanceWins = entry.cycles
@@ -101,6 +101,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     })
   }
 }
+
 exports.createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions
   const typeDefs = `
@@ -109,11 +110,11 @@ exports.createSchemaCustomization = ({ actions }) => {
   }
   type Frontmatter{
     cell: String
-    cycleYear: Int!
-    cycle: Int!
-    cycleDate: String!
-    resistance: Int!
-    enlightened: Int!
+    cycleYear: Int
+    cycle: Int
+    cycleDate: String
+    resistance: Int
+    enlightened: Int
   }
 `
   createTypes(typeDefs)
