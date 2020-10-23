@@ -4,7 +4,9 @@
     "target": {
       "namespace": "android_app",
       "package_name": "xyz.appmaker.buslcw",
-      "sha256_cert_fingerprints": ["35:FC:23:CF:86:5A:89:20:09:E8:C4:0D:A6:4E:C9:71:4A:D2:9B:6B:71:02:94:27:65:15:B2:AC:02:57:D2:DE"]
+      "sha256_cert_fingerprints": [
+        "35:FC:23:CF:86:5A:89:20:09:E8:C4:0D:A6:4E:C9:71:4A:D2:9B:6B:71:02:94:27:65:15:B2:AC:02:57:D2:DE"
+      ]
     }
   }
 ]

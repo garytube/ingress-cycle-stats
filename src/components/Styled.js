@@ -14,20 +14,23 @@ export const ScoreBlock = styled.div`
   display: inline-block;
   height: 20px;
   width: 20px;
-  position:relative;
+  position: relative;
   padding: 0;
   margin: 1px;
-  transition:all 0.5s ease;
-  &:hover, &:focus {
-    box-shadow: 0 0 10px 2px rgba(0,0,0,0.6), inset 0 0 5px 1px rgba(0,0,0,0.2);
+  color: black;
+  transition: all 0.5s ease;
+  &:hover,
+  &:focus {
+    box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.6),
+      inset 0 0 5px 1px rgba(0, 0, 0, 0.2);
     z-index: 10;
     border-radius: 4px;
     transform: scale(1.3) rotate(142deg);
   }
-  @media(min-width: 768px) {
+  @media (min-width: 768px) {
     height: 25px;
     width: 25px;
-    }
+  }
 
   ${props =>
     props.winner === "res" &&
@@ -56,9 +59,6 @@ export const ScoreBlock = styled.div`
         margin: auto;
       }
     `}
-
-
-
 `
 
 export const Title = styled.h2`

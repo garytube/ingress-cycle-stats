@@ -3,13 +3,14 @@ import { ScoreBlock, YearWrapper, Title } from "./Styled"
 import { CycleLine } from "./Charts"
 
 function Scoreboard({ data, setActiveCycle }) {
+  console.log(data)
   return (
     <div>
       {data.map(({ year, cycles }) => (
         <Year key={year} year={year}>
-          {cycles.map(({ cycle }) => (
+          {cycles.sort((a,b) => a.cycle.cycle - b.cycle.cycle).map(({ cycle },i) => (
             <ScoreBlock
-              key={cycle.cycle}
+              key={`${year}+${cycle.cycle}-${i}`}
               onFocus={() => setActiveCycle(cycle)}
               onMouseOver={() => setActiveCycle(cycle)}
               winner={cycle.enl < cycle.res ? "res" : "enl"}
