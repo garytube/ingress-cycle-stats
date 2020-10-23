@@ -8,14 +8,16 @@ function Scoreboard({ data, setActiveCycle }) {
     <div>
       {data.map(({ year, cycles }) => (
         <Year key={year} year={year}>
-          {cycles.sort((a,b) => a.cycle.cycle - b.cycle.cycle).map(({ cycle },i) => (
-            <ScoreBlock
-              key={`${year}+${cycle.cycle}-${i}`}
-              onFocus={() => setActiveCycle(cycle)}
-              onMouseOver={() => setActiveCycle(cycle)}
-              winner={cycle.enl < cycle.res ? "res" : "enl"}
-            />
-          ))}
+          {cycles
+            .sort((a, b) => a.cycle.cycle - b.cycle.cycle)
+            .map(({ cycle }, i) => (
+              <ScoreBlock
+                key={`${year}+${cycle.cycle}-${i}`}
+                onFocus={() => setActiveCycle(cycle)}
+                onMouseOver={() => setActiveCycle(cycle)}
+                winner={cycle.enl < cycle.res ? "res" : "enl"}
+              />
+            ))}
           <CycleLine cycles={cycles} />
         </Year>
       ))}

@@ -1,7 +1,7 @@
 import React from "react"
 import { Helmet } from "react-helmet"
 import styled, { createGlobalStyle } from "styled-components"
-import GitHubButton from 'react-github-btn'
+import GitHubButton from "react-github-btn"
 const GlobalStyle = createGlobalStyle`
 * {box-sizing: border-box}
   body {
@@ -38,9 +38,33 @@ export default function Layout({ children }) {
       </Helmet>
 
       <Grid>
-        <GitHubButton href="https://github.com/garytube/ingress-cycle-stats" data-color-scheme="no-preference: dark; light: dark; dark: dark;" data-size="large" data-show-count="true" aria-label="Star garytube/ingress-cycle-stats on GitHub">Star</GitHubButton>
-        <GitHubButton href="https://github.com/garytube/ingress-cycle-stats/fork" data-color-scheme="no-preference: dark; light: dark; dark: dark;" data-size="large" data-show-count="true" aria-label="Fork garytube/ingress-cycle-stats on GitHub">Fork</GitHubButton>
-<GitHubButton href="https://github.com/garytube/ingress-cycle-stats/issues" data-color-scheme="no-preference: dark; light: dark; dark: dark;" data-size="large" data-show-count="true" aria-label="Issue garytube/ingress-cycle-stats on GitHub">Issue</GitHubButton>
+        <GitHubButton
+          href="https://github.com/garytube/ingress-cycle-stats"
+          data-color-scheme="no-preference: dark; light: dark; dark: dark;"
+          data-size="large"
+          data-show-count="true"
+          aria-label="Star garytube/ingress-cycle-stats on GitHub"
+        >
+          Star
+        </GitHubButton>
+        <GitHubButton
+          href="https://github.com/garytube/ingress-cycle-stats/fork"
+          data-color-scheme="no-preference: dark; light: dark; dark: dark;"
+          data-size="large"
+          data-show-count="true"
+          aria-label="Fork garytube/ingress-cycle-stats on GitHub"
+        >
+          Fork
+        </GitHubButton>
+        <GitHubButton
+          href="https://github.com/garytube/ingress-cycle-stats/issues"
+          data-color-scheme="no-preference: dark; light: dark; dark: dark;"
+          data-size="large"
+          data-show-count="true"
+          aria-label="Issue garytube/ingress-cycle-stats on GitHub"
+        >
+          Issue
+        </GitHubButton>
         <main>{children}</main>
         <footer>
           © {currentYear}, Built by{" "}
