@@ -12,8 +12,8 @@ import { ScoreDoughnut } from "./Charts"
 
 const YearScore = ({ scores }) => {
   const { points } = useScoresByYear(scores)
-
-  const withoutCurrentYear = points.filter(point => point.year !== "2020")
+  const currentYear = new Date().getFullYear().toString()
+  const withoutCurrentYear = points.filter(point => point.year !== currentYear)
 
   return (
     <ChartGrid>
