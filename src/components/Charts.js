@@ -47,20 +47,20 @@ export function ScoreLine({ data }) {
   const [visable, setVisable] = useState(false)
   const style = {
     fill: false,
-    lineTension: 0.3,
+    lineTension: 0.2,
     backgroundColor: "rgba(75,192,192,0)",
     borderColor: "rgba(75,192,192,1)",
     borderCapStyle: "butt",
     borderDash: [],
     borderDashOffset: 0.0,
     borderJoinStyle: "miter",
-    pointBorderColor: "rgba(75,192,192,1)",
-    pointBackgroundColor: "#fff",
-    pointBorderWidth: 1,
-    pointHoverRadius: 5,
-    pointHoverBackgroundColor: "rgba(75,192,192,1)",
-    pointHoverBorderColor: "rgba(220,220,220,1)",
-    pointHoverBorderWidth: 2,
+    pointBorderColor: "rgba(0,0,0,1)",
+    pointBackgroundColor: "#000",
+    pointBorderWidth: 3,
+    pointHoverRadius: 4,
+    pointHoverBackgroundColor: "rgba(255,255,255,1)",
+    pointHoverBorderColor: "rgba(0,0,0,1)",
+    pointHoverBorderWidth: 4,
     pointRadius: 1,
     pointHitRadius: 10,
   }
@@ -83,16 +83,26 @@ export function ScoreLine({ data }) {
   }
 
   const options = {
-    maintainAspectRatio: false,
+    responsive: true,
     scales: {
+      xAxes: [
+        {
+          display: true,
+          ticks: {
+            beginAtZero: false
+          }
+
+        }
+      ],
       yAxes: [
         {
+          display: false,
           ticks: {
-            beginAtZero: false,
-          },
-        },
-      ],
-    },
+            beginAtZero: false
+          }
+        }
+      ]
+    }
   }
 
   return (
@@ -100,7 +110,7 @@ export function ScoreLine({ data }) {
       partialVisibility
       onChange={isVisible => setVisable(isVisible)}
     >
-      <ChartSpacer height="400px">
+      <ChartSpacer height="420px">
         {visable && <Line data={foo} options={options} />}
       </ChartSpacer>
     </VisibilitySensor>
@@ -110,9 +120,9 @@ export function ScoreLine({ data }) {
 export function CycleLine({ cycles }) {
   const [visable, setVisable] = useState(false)
   const style = {
-    lineTension: 0.3,
-    backgroundColor: "rgba(75,192,192,0)",
-    borderColor: "rgba(75,192,192,1)",
+    lineTension: 0.2,
+    backgroundColor: "rgba(0,0,0,1)",
+    borderColor: "rgba(0,0,0,1)",
     borderCapStyle: "butt",
     borderDash: [],
     borderDashOffset: 0.0,

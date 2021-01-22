@@ -15,9 +15,8 @@ const ScoreboardTemplate = ({ data, pageContext }) => {
     res: 0,
   })
   const { res, enl, cycleYear, cycle } = activeCycle
-
   const datasetOverall = {
-    x: pageContext.scores.map(e => e.year).filter(y => y !== "2020"),
+    x: pageContext.scores.map(e => e.year).reverse(),
     res: pageContext.scores.map(p => p.resistancePoints),
     enl: pageContext.scores.map(p => p.enlightenedPoints),
   }
