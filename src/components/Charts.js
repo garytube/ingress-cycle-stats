@@ -89,20 +89,19 @@ export function ScoreLine({ data }) {
         {
           display: true,
           ticks: {
-            beginAtZero: false
-          }
-
-        }
+            beginAtZero: false,
+          },
+        },
       ],
       yAxes: [
         {
           display: false,
           ticks: {
-            beginAtZero: false
-          }
-        }
-      ]
-    }
+            beginAtZero: false,
+          },
+        },
+      ],
+    },
   }
 
   return (
