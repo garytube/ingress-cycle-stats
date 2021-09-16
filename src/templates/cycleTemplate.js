@@ -9,7 +9,7 @@ import {
   ScoreNumber,
   Button,
 } from "../components/Styled"
-import css from "./cycleTemplate.module.css"
+import * as css from "./cycleTemplate.module.css"
 
 export default function CycleTemplate({ data }) {
   const {

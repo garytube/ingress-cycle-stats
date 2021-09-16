@@ -1,19 +1,21 @@
 import React, { useState } from "react"
-import { Doughnut, Line, defaults } from "react-chartjs-2"
+import { Doughnut, Line } from "react-chartjs-2"
 import VisibilitySensor from "react-visibility-sensor"
 import { COLOR_RESISTANCE, COLOR_ENLIGHTENED, ChartSpacer } from "./Styled"
 
-defaults.global.animation.duration = 2000
+
 
 export function ScoreDoughnut({ data }) {
   const [visable, setVisable] = useState(false)
 
   const options = {
+    responsive: true,
+          maintainAspectRatio: false,
     legend: {
-      display: false,
+      display: true,
     },
     tooltips: {
-      enabled: false,
+      enabled: true,
     },
   }
 
@@ -25,6 +27,7 @@ export function ScoreDoughnut({ data }) {
       <ChartSpacer height="150px">
         {visable && (
           <Doughnut
+          height={250}
             data={{
               labels: ["Resistance", "Enlightened"],
               datasets: [
