@@ -1,7 +1,7 @@
 {
   "name": "ingress-cycle-stats",
   "description": "A simple React App that shows the Cycle History for a Cell.",
-  "version": "1.0.1",
+  "version": "1.5.1",
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
